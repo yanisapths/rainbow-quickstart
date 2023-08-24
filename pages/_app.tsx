@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import type { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
 import { configureChains, createConfig, sepolia, WagmiConfig } from "wagmi";
 import {
   arbitrum,
@@ -13,6 +14,8 @@ import {
   zora,
 } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Layouts from "../components/layout/layout";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -40,13 +43,18 @@ const wagmiConfig = createConfig({
   webSocketPublicClient,
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const clientId: string = process.env.NEXT_PUBLIC_GOOGLE_AUTH!;
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <SessionProvider session={session}>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider chains={chains}>
+          <Layouts>
+            <Component {...pageProps} />
+          </Layouts>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </SessionProvider>
   );
 }
 
