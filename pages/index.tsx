@@ -2,8 +2,14 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { Button } from "@mui/material";
+import BasicModal from "../components/modal/BasicModal";
+import { useState } from "react";
 
 const Home: NextPage = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +22,17 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <ConnectButton />
+        <div>
+          <ConnectButton />
+        </div>
+        <div className={styles.main}>
+          <Button onClick={handleOpen}>Open modal</Button>
+        </div>
+        <BasicModal
+          open={open}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+        />
       </main>
     </div>
   );
