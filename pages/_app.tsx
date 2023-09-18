@@ -25,7 +25,7 @@ const ariseChain: Chain = {
   },
   rpcUrls: {
     default: {
-      http: [process.env.RPC_URL!],
+      http: ["https://aster-rpc-nonprd.arisetech.dev"],
     },
     public: {
       http: [],
