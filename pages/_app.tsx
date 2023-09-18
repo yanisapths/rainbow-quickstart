@@ -70,9 +70,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   }
   return (
     <SessionProvider session={session}>
-      <ReCaptchaProvider
-        reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-      >
         <GoogleOAuthProvider clientId={clientId}>
           <QueryClientProvider client={queryClientRef.current}>
             <WagmiConfig config={config}>
@@ -84,7 +81,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             </WagmiConfig>
           </QueryClientProvider>
         </GoogleOAuthProvider>
-      </ReCaptchaProvider>
     </SessionProvider>
   );
 }

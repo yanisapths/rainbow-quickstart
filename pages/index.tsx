@@ -23,14 +23,7 @@ import { verifyMessage } from "ethers";
 import Wallet from "@/components/wallet/index";
 
 const Home: NextPage = () => {
-  const { loaded, executeRecaptcha } = useReCaptcha();
-  const recapcha = useGoogleRecaptcha();
-  const storage = Storage.getInstance();
   const [network, setNetwork] = useState<string>("");
-  const [googleProfile, setGoogleProfile] = useState<GoogleProfile>();
-  const [token, setToken] = useState<string>();
-  const [nonceRes, setNonceRes] = useState<Nonce>();
-  const [isSigned, setIsSigned] = useState<boolean>(false);
 
   // handle account
   const account = useAccount({
@@ -43,46 +36,6 @@ const Home: NextPage = () => {
     },
   });
 
-  const getProfile = () => {
-    const profile: GoogleProfile = Storage.getInstance().getGoogleProfile();
-
-    return profile;
-  };
-
-  const userProfile = useQuery(
-    "userProfile",
-    () => {
-      return getProfile();
-    },
-    {
-      refetchInterval: 1000,
-    }
-  );
-
-  const getAssetsService = async () => {
-    const req: GetAssetsReq = {
-      walletAddress: userProfile?.data?.wallet || "",
-    };
-    if (token) {
-      try {
-        return await getAssets(token, req);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
-
-  const assetsProfile = useQuery(
-    "assetsProfile",
-    () => {
-      return getAssetsService();
-    },
-    {
-      enabled: userProfile.isSuccess,
-      refetchOnWindowFocus: false,
-      retry: false,
-    }
-  );
 
   return (
     <div>
@@ -98,29 +51,7 @@ const Home: NextPage = () => {
       <main className="h-screen flex flex-col justify-center items-center">
       <Wallet />
         <div className="py-4">
-        {assetsProfile.data ? (
-          assetsProfile.data.data.data.map((nft: GetAssetsRes, key: Key) => {
-            return (
-              <div key={key} className="">
-                <NFT
-                  nft={nft}
-                  link={`/nft/?id=${
-                    nft.tokenId
-                  }&address=${nft.contractAddress.toLocaleLowerCase()}`}
-                />
-              </div>
-            );
-          })
-        ) : (
-          <div className="flex w-fit rounded-full bg-white/20 shadow-lg px-12">
-            <p className="text-sm p-2 uppercase text-white">no data</p>
-          </div>
-        )}
-        </div>
-        <div className="text-white">
-          {userProfile.data && (
-            <p> employeeId: {userProfile.data.employeeId}</p>
-          )}
+        <NFT/>
         </div>
       </main>
     </div>

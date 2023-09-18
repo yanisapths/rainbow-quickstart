@@ -18,3 +18,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.nft-gen-image {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 450px;
+  width: 450px;
+  border-radius: 0.5rem;
+}

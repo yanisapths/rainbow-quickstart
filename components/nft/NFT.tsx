@@ -1,85 +1,117 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import AsterSoulABI from "@/artifacts/abi/aster-soul/AsterSoul.json";
+import AsterSoulRenderUtilsABI from "@/artifacts/abi/aster-soul/AsterSoulRenderUtils.json";
+import { useContractRead } from "wagmi";
+import type { BigNumberish } from "ethers";
+import { BigNumber } from "@ethersproject/bignumber";
+import useWallet from "@/services/hook/useWallet";
 
-export function NFT({ nft, link }: NFTProps) {
-  const [detail, setDetail] = useState<NFTMetadata>();
-  const metaData = `${
-    process.env.NEXT_PUBLIC_NFT_META_DATA
-  }/${nft.contractAddress.toLocaleLowerCase()}/${nft.tokenId}`;
-  const fetchImage = async () => {
-    try {
-      const res = await fetch(metaData);
-      console.log({res:res})
-      if (res.status == 200) {
-        const result = await res.json();
-        setDetail(result);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    fetchImage();
-  }, []);
+export interface SlotParts {
+  childAssetMetadata: ChildAssetMetadata;
+  z: number;
+}
+interface ChildAssetMetadata {
+  id: number;
+  trait_type: string;
+  value: string;
+  image: string;
+}
+export function NFT() {
+  const [slotParts, setSlotParts] = useState<SlotParts[]>([]);
+  const wallet = useWallet();
+  const [generatedNFTBalance, setGeneratedNFTBalance] = useState<number>();
+  const [ownerToTokenId, setOwnerToTokenId] = useState<number>(0);
+  // ownerToTokenId
+  const contractOwnerToTokenId = useContractRead({
+    address: process.env.NEXT_PUBLIC_ABI_ADDRESS_ASTERSOUL as any,
+    abi: AsterSoulABI.abi,
+    functionName: "ownerToTokenId",
+    args: [wallet.account.address],
+    enabled: !!wallet.account.address,
+    onSuccess(data: any) {
+      setOwnerToTokenId(BigNumber.from(data).toNumber());
+    },
+    onError(error) {
+      console.log(error);
+    },
+  });
+
+  // composeEquippables
+  const contractComposeEquippables = useContractRead({
+    address: process.env.NEXT_PUBLIC_ABI_ADDRESS_ASTERSOUL_RENDER_UTILS as any,
+    abi: AsterSoulRenderUtilsABI.abi,
+    functionName: "composeEquippables",
+    args: [process.env.NEXT_PUBLIC_ABI_ADDRESS_ASTERSOUL, ownerToTokenId, 1],
+    enabled: !!wallet.account.address && !!ownerToTokenId,
+    onSuccess(data: any) {
+      const parts = data[4]
+        .filter((e: any) => e.childAssetMetadata !== "")
+        .map((e: any) => ({
+          childAssetMetadata: JSON.parse(e.childAssetMetadata),
+          z: e.z,
+        }));
+      setSlotParts(parts);
+    },
+    onError(error) {
+      console.log(error);
+    },
+  });
 
   return (
-    <>
-      {detail && (
-        <Link href={`${link}`}>
-          <div className="col-span-1 flex flex-col campaigns">
-            <div
-              className="image"
-              style={{ backgroundImage: `url(${detail.image})` }}
-            ></div>
-
-            <div className="mb-4 flex flex-wrap p-4">
-              <span className="mr-2 tags">{nft.assetType}</span>
-            </div>
-            <h2 className="font-bold text-md text-white pr-4 pl-4">
-              {detail.name}
-            </h2>
-            <div className="flex flex-wrap mt-auto pt-3 text-xs p-4">
-              <p className="mr-2 mb-2 flex items-center gap-1 text-white font-light ">
-                <Image
-                  src={nft.eventTag}
-                  alt={nft.eventName}
-                  width={"20"}
-                  height={"20"}
-                />
-                {nft.eventName}
-              </p>
-            </div>
-          </div>
-        </Link>
-      )}
-    </>
+    <section>
+      <div
+        className="nft-gen-image relative bg-white"
+        style={{
+          borderRadius: "0.5rem 0.5rem 0 0",
+          backgroundImage: `url(/images/nft/generator/bg-001.png)`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
+        {slotParts &&
+          slotParts.map((slot, k) => {
+            return (
+              <div
+                key={k}
+                className="nft-gen-image absolute "
+                style={{
+                  zIndex: `${slot.z}`,
+                  backgroundImage: `url(${slot.childAssetMetadata.image})`,
+                }}
+              ></div>
+            );
+          })}
+      </div>
+    </section>
   );
 }
 export interface GetAssetsRes {
-    campaignId:      number;
-    campaignName:    string;
-    eventName:       string;
-    eventTag:        string;
-    contractAddress: string;
-    tokenId:         number;
-    assetType: string;
+  campaignId: number;
+  campaignName: string;
+  eventName: string;
+  eventTag: string;
+  contractAddress: string;
+  tokenId: number;
+  assetType: string;
 }
 
 export interface NFTMetadata {
-    name:          string;
-    description:   string;
-    image:         string;
-    external_link: string;
-    attributes:    Attribute[];
+  name: string;
+  description: string;
+  image: string;
+  external_link: string;
+  attributes: Attribute[];
 }
 
 export interface Attribute {
-    trait_type: string;
-    value:      string | number;
+  trait_type: string;
+  value: string | number;
 }
 
 export interface NFTProps {
-  nft: GetAssetsRes;
-  link: string;
+  nft?: GetAssetsRes;
+  link?: string;
 }
