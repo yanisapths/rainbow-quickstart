@@ -1,4 +1,4 @@
-import { GoogleProfile } from "../model/google.model";
+import { GoogleProfile } from "@/model/google.model";
 
 export class Storage {
   private static _instance: Storage = new Storage();
@@ -69,7 +69,7 @@ export class Storage {
 
   public getSessionToken() {
     if (typeof window !== "undefined") {
-      return sessionStorage.getItem("sessionToken")!;
+      return sessionStorage.getItem("sessionToken") || null;
     }
   }
 

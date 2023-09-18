@@ -1,0 +1,332 @@
+[
+	{
+	  "trait_type": "ANTENNA",
+	  "values": [
+		{
+		  "text": "Earth Lord",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/001.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_001.png"
+		},
+		{
+		  "text": "Fire Moon",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/002.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_002.png"
+		},
+		{
+		  "text": "Athena",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/003.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_003.png"
+		},
+		{
+		  "text": "Dark Universe",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/004.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_004.png"
+		},
+		{
+		  "text": "Warm Heart",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/005.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_005.png"
+		},
+		{
+		  "text": "Monkey Poke",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/006.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_006.png"
+		},
+		{
+		  "text": "Delight Universe",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/007.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_007.png"
+		},
+		{
+		  "text": "Zinnia",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/008.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_008.png"
+		},
+		{
+		  "text": "Vlad Dracul",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/009.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_009.png"
+		},
+		{
+		  "text": "Child of Earth",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/010.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/antenna/t_010.png"
+		}
+	  ]
+	},
+	{
+	  "trait_type": "BODY",
+	  "values": [
+		{
+		  "text": "Sweetness",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/001.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_001.png"
+		},
+		{
+		  "text": "Playful",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/002.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_002.png"
+		},
+		{
+		  "text": "Stable",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/003.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_003.png"
+		},
+		{
+		  "text": "Indigo Blue",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/004.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_004.png"
+		},
+		{
+		  "text": "Sentimental",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/005.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_005.png"
+		},
+		{
+		  "text": "Brown Sugar",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/006.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_006.png"
+		},
+		{
+		  "text": "Warmness",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/007.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_007.png"
+		},
+		{
+		  "text": "Spicy",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/008.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_008.png"
+		},
+		{
+		  "text": "Darkness",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/009.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_009.png"
+		},
+		{
+		  "text": "Sunset",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/010.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/body/t_010.png"
+		}
+	  ]
+	},
+	{
+	  "trait_type": "EYES",
+	  "values": [
+		{
+		  "text": "Nothing in My Head",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/001.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_001.png"
+		},
+		{
+		  "text": "In My Day Dream",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/002.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_002.png"
+		},
+		{
+		  "text": "Fall in Love",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/003.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_003.png"
+		},
+		{
+		  "text": "Nervous",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/004.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_004.png"
+		},
+		{
+		  "text": "Cheeky",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/005.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_005.png"
+		},
+		{
+		  "text": "Shine Bright Like a Diamond",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/006.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_006.png"
+		},
+		{
+		  "text": "Mind Assasin",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/007.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_007.png"
+		},
+		{
+		  "text": "Killing by Sight",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/008.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_008.png"
+		},
+		{
+		  "text": "Comfortable",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/009.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_009.png"
+		},
+		{
+		  "text": "On Target",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/010.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/eyes/t_010.png"
+		}
+	  ]
+	},
+	{
+	  "trait_type": "FACE",
+	  "values": [
+		{
+		  "text": "Cracked Round",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/001.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_001.png"
+		},
+		{
+		  "text": "Butt Cheek",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/002.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_002.png"
+		},
+		{
+		  "text": "Curvy",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/003.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_003.png"
+		},
+		{
+		  "text": "Scarred Skull",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/004.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_004.png"
+		},
+		{
+		  "text": "Ornamental",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/005.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_005.png"
+		},
+		{
+		  "text": "Round",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/006.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_006.png"
+		},
+		{
+		  "text": "Extra Curvy",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/007.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_007.png"
+		},
+		{
+		  "text": "Blob",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/008.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_008.png"
+		},
+		{
+		  "text": "Skull",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/009.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_009.png"
+		},
+		{
+		  "text": "Cracked Ornamental",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/010.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/faces/t_010.png"
+		}
+	  ]
+	},
+	{
+	  "trait_type": "BUBBLE",
+	  "values": [
+		{
+		  "text": "Strawberry Milkshake",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/001.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_001.png"
+		},
+		{
+		  "text": "Mint",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/002.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_002.png"
+		},
+		{
+		  "text": "Blue Lagoon",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/003.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_003.png"
+		},
+		{
+		  "text": "Grape",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/004.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_004.png"
+		},
+		{
+		  "text": "Gummy",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/005.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_005.png"
+		},
+		{
+		  "text": "Lemon",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/006.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_006.png"
+		},
+		{
+		  "text": "Muscat",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/007.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_007.png"
+		},
+		{
+		  "text": "Kyoho",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/008.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_008.png"
+		},
+		{
+		  "text": "Charcoal",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/009.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_009.png"
+		},
+		{
+		  "text": "Mandarin",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/010.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/bubble/t_010.png"
+		}
+	  ]
+	},
+	{
+	  "trait_type": "BELLY",
+	  "values": [
+		{
+		  "text": "Bonnie",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/001.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_001.png"
+		},
+		{
+		  "text": "Aleister",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/002.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_002.png"
+		},
+		{
+		  "text": "Summersault",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/003.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_003.png"
+		},
+		{
+		  "text": "Barbie",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/004.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_004.png"
+		},
+		{
+		  "text": "Sabrina",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/005.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_005.png"
+		},
+		{
+		  "text": "Black Forest",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/006.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_006.png"
+		},
+		{
+		  "text": "Whisper",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/007.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_007.png"
+		},
+		{
+		  "text": "Ursula",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/008.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_008.png"
+		},
+		{
+		  "text": "Skeleton Knight",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/009.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_009.png"
+		},
+		{
+		  "text": "Demon",
+		  "img": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/010.png",
+		  "thumbnail": "https://star-inno-sit-asset.arisetech.dev/main/nft-generator/components/v1/belly/t_010.png"
+		}
+	  ]
+	}
+  ]

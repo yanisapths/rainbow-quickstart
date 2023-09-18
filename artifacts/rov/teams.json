@@ -1,0 +1,22 @@
+[
+  { "id": "0", "team": "1", "name": "Dimension breaker", "logo": "/images/rov/teams/1.png" , "lead": "Joke", "video": "https://youtu.be/eZbbSApIkIQ"},
+  { "id": "1", "team": "2", "name": "อุบ๊ะ!! มันจ้าซะเหลือเกิน", "logo": "/images/rov/teams/2.png" , "lead": "Nose" ,"video": "https://youtu.be/QNycU6tPX00"},
+  { "id": "2", "team": "3", "name": "War of the Sun", "logo": "/images/rov/teams/3.png" , "lead": "Shirley" ,"video": "https://youtu.be/wx8asrG7KfA"},
+  { "id": "3", "team": "4", "name": "แอ๊ด!!", "logo": "/images/rov/teams/4.png" , "lead": "Ying","video": "https://youtu.be/vXvNPDO-FRc"},
+  { "id": "4", "team": "5", "name": "Crash Gaming", "logo": "/images/rov/teams/5.png" , "lead": "Yui","video": "https://youtu.be/724h0zcDj6c"},
+  { "id": "5", "team": "6", "name": "Sea Wolves", "logo": "/images/rov/teams/6.png" , "lead": "Cin","video": ""},
+  { "id": "6", "team": "7", "name": "5 ผู้น้อย", "logo": "/images/rov/teams/7.png" , "lead": "Ohm","video": "https://youtu.be/vrHOzKS0evA"},
+  { "id": "7", "team": "8", "name": "KT ESPORTS", "logo": "/images/rov/teams/8.png" , "lead": "Tua","video": "https://youtu.be/6p4rQ11aHRE"},
+  { "id": "8", "team": "9", "name": "Notorious", "logo": "/images/rov/teams/9.png" , "lead": "Aey","video": "https://youtu.be/lyofn6Bs8UI"},
+  { "id": "9", "team": "10", "name": "Money heist", "logo": "/images/rov/teams/10.png" , "lead": "Beau","video": "https://youtu.be/z8NhbY0jfX4"},
+  { "id": "10", "team": "11", "name": "น้องวายุ ไม่มีตังต์", "logo": "/images/rov/teams/11.png" , "lead": "Pao","video": ""},
+  { "id": "11", "team": "12", "name": "เหมียว แรนเจอร์", "logo": "/images/rov/teams/12.png" , "lead": "Chan","video": "https://youtu.be/1p01wqXOoVg"},
+  { "id": "12", "team": "13", "name": "พี่แอนกับแมวเป้าทั้งหก", "logo": "/images/rov/teams/13.png" , "lead": "Ann","video": "https://youtu.be/uGFsO4D3ipA"},
+  { "id": "13", "team": "14", "name": "Sixxy Piggy", "logo": "/images/rov/teams/14.png" , "lead": "Jha","video": "https://youtu.be/cxyAdIPHho0"},
+  { "id": "14", "team": "15", "name": "Bond ไม่เต็ม Baht", "logo": "/images/rov/teams/15.png" , "lead": "Nong","video": "https://youtu.be/4V-3gJve8kA"},
+  { "id": "15", "team": "16", "name": "Mega Kill", "logo": "/images/rov/teams/16.png" , "lead": "Pop","video": "https://youtu.be/w5NCS136OJQ"},
+  { "id": "16", "team": "17", "name": "CRAZY CHICKY", "logo": "/images/rov/teams/17.png" , "lead": "Wut","video": "https://youtu.be/4HSR2UjihWI"},
+  { "id": "17", "team": "18", "name": "CAPYBARA", "logo": "/images/rov/teams/18.png" , "lead": "Kim","video": ""},
+  { "id": "18", "team": "19", "name": "No Picture", "logo": "/images/rov/teams/19.png" , "lead": "Wan","video": ""},
+  { "id": "19", "team": "20", "name": "Team Alpha Esport", "logo": "/images/rov/teams/20.png", "lead": "Chai" ,"video": ""}
+]
