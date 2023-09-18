@@ -1,54 +1,66 @@
-import "../styles/globals.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import type { AppProps } from "next/app";
-import { SessionProvider } from "next-auth/react";
-import { configureChains, createConfig, sepolia, WagmiConfig } from "wagmi";
 import {
-  arbitrum,
-  goerli,
-  mainnet,
-  optimism,
-  polygon,
-  base,
-  zora,
-} from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+  Chain,
+  RainbowKitProvider,
+  connectorsForWallets,
+} from "@rainbow-me/rainbowkit";
+import "@rainbow-me/rainbowkit/styles.css";
+import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
+import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import Layouts from "../components/layout/layout";
+import "../styles/globals.css";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
+const ariseChain: Chain = {
+  id: 4833,
+  name: "Arise Testnet",
+  network: "arisetestnet",
+  iconUrl: `${process.env.NEXT_PUBLIC_URL}/images/arise-network.png`,
+  iconBackground: "#fff",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Arise",
+    symbol: "Arise",
+  },
+  rpcUrls: {
+    default: {
+      http: [process.env.RPC_URL!],
+    },
+    public: {
+      http: [],
+      webSocket: undefined,
+    },
+  },
+  testnet: true,
+};
+
+const { chains, publicClient } = configureChains(
+  [ariseChain],
   [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
-  ],
-  [publicProvider()]
+    jsonRpcProvider({
+      rpc: (chain) => ({ http: chain.rpcUrls.default.http[0] }),
+    }),
+  ]
 );
 
-const { connectors } = getDefaultWallets({
-  appName: "RainbowKit App",
-  projectId: "ecfb0f367ce95fd57f80c58df2befe9c",
-  chains,
-});
+const connectors = connectorsForWallets([
+  {
+    groupName: "Meta Mask Wallet",
+    wallets: [metaMaskWallet({ chains, projectId: "..." })],
+  },
+]);
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
+const config = createConfig({
   connectors,
   publicClient,
-  webSocketPublicClient,
 });
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  const clientId: string = process.env.NEXT_PUBLIC_GOOGLE_AUTH!;
   return (
     <SessionProvider session={session}>
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider chains={chains}>
+      <WagmiConfig config={config}>
+        <RainbowKitProvider chains={chains} coolMode>
           <Layouts>
             <Component {...pageProps} />
           </Layouts>
