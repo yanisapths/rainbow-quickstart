@@ -119,7 +119,7 @@ export default function Wallet() {
       }
     } catch (err) {
       Loading.hide();
-   
+
       console.error(err);
     }
   };
@@ -165,8 +165,8 @@ export default function Wallet() {
   });
 
   useEffect(() => {
-    if(balanceNative.data && balanceNative.isSuccess){
-        setArise(Number(balanceNative.data.formatted).toLocaleString());
+    if (balanceNative.data && balanceNative.isSuccess) {
+      setArise(Number(balanceNative.data.formatted).toLocaleString());
     }
   }, [balanceNative]);
 
@@ -186,28 +186,28 @@ export default function Wallet() {
   });
 
   const genSessionToken = async (signedMessage: any) => {
-    if(nonce.data && account.address){
-        try {
-          const req: GenSessionRequest = {
-            signedMessage: signedMessage,
-            nonce: nonce.data.data.data.nonce,
-            publicAddress: account.address,
-          };
-          const token: Recaptcha = await { token: await getRecaptchaToken() };
-          const data = await generateSessionToken(req, token.token);
-          storage.setSessionToken(data.data.data.sessionToken);
-    
-          const userInfo = await getUserInfo();
-          if(userInfo){
-              userInfo.data.data.wallet = account.address;
-              storage.setGoogleProfie(userInfo.data.data);
-              setGoogleProfile(userInfo.data.data);
-          }
-        } catch (err) {
-          setTimeout(function () {
-            window.location.reload();
-          }, 2000);
+    if (nonce.data && account.address) {
+      try {
+        const req: GenSessionRequest = {
+          signedMessage: signedMessage,
+          nonce: nonce.data.data.data.nonce,
+          publicAddress: account.address,
+        };
+        const token: Recaptcha = await { token: await getRecaptchaToken() };
+        const data = await generateSessionToken(req, token.token);
+        storage.setSessionToken(data.data.data.sessionToken);
+
+        const userInfo = await getUserInfo();
+        if (userInfo) {
+          userInfo.data.data.wallet = account.address;
+          storage.setGoogleProfie(userInfo.data.data);
+          setGoogleProfile(userInfo.data.data);
         }
+      } catch (err) {
+        setTimeout(function () {
+          window.location.reload();
+        }, 2000);
+      }
     }
   };
 
@@ -244,7 +244,6 @@ export default function Wallet() {
         return await checkExistingMember(address, token);
       } catch (err) {
         console.error(err);
-   
       }
     }
   };
@@ -309,12 +308,11 @@ export default function Wallet() {
       account.connector && account.isConnected && nonce.status === "success",
     ],
     async () => {
-        if(nonce.data){
-
-            const nonceResponse: Nonce = nonce.data.data.data;
-            const message = `Please sign in with your Ethereum account: ${account.address}\n\nSign in with Ethereum to the app.\n\nWebsite: ${process.env.NEXT_PUBLIC_URL}\nNonce: ${nonceResponse.nonce}\nIssued At: ${nonceResponse.issuedAt}\nExpiration Time: ${nonceResponse.expiredAt}`;
-            signMessage({ message });
-        }
+      if (nonce.data) {
+        const nonceResponse: Nonce = nonce.data.data.data;
+        const message = `Please sign in with your Ethereum account: ${account.address}\n\nSign in with Ethereum to the app.\n\nWebsite: ${process.env.NEXT_PUBLIC_URL}\nNonce: ${nonceResponse.nonce}\nIssued At: ${nonceResponse.issuedAt}\nExpiration Time: ${nonceResponse.expiredAt}`;
+        signMessage({ message });
+      }
     },
     {
       enabled: account.isConnected && nonce.status === "success",
@@ -344,33 +342,39 @@ export default function Wallet() {
             </button>
           )}
 
-        <ConnectButton chainStatus="icon" />
+        <div className="py-2">
+          <ConnectButton chainStatus="icon" />
+        </div>
         {checkExisting &&
           checkExisting.status === "success" &&
-          checkExisting.data && !isSigned && (<>
-        <button
-        className="iekbcc0 iekbcc9 ju367v73 ju367v7o ju367v9c ju367vn ju367vec ju367vex ju367v11 ju367v1c ju367v2b ju367v8o _12cbo8i3 ju367v8m _12cbo8i4 _12cbo8i6"
-        onClick={()=>{
-            signedMessage.refetch();
-        }}
-        >Please Sign Message</button>
-        </>)}
-        {wallet.handleConnectWallet() &&
-              isSigned &&
-            <div className="flex gap-4 items-center" >
-          <div className="flex flex-row items-center gap-1 md:gap-3 p-2 rounded-lg bg-shadow">
-            {wallet.handleConnectWallet() &&
-              balance.isSuccess &&
-              balance.data &&
-              isSigned && (
-                <p className="mt-1 ml-1">
-                  {Number(balance.data.formatted).toLocaleString()}{" "}
-                  {process.env.NEXT_PUBLIC_ASTR_TOKEN_NAME}
-                </p>
-              )}
+          checkExisting.data &&
+          !isSigned && (
+            <>
+              <button
+                className="iekbcc0 iekbcc9 ju367v73 ju367v7o ju367v9c ju367vn ju367vec ju367vex ju367v11 ju367v1c ju367v2b ju367v8o _12cbo8i3 ju367v8m _12cbo8i4 _12cbo8i6"
+                onClick={() => {
+                  signedMessage.refetch();
+                }}
+              >
+                Please Sign Message
+              </button>
+            </>
+          )}
+        {wallet.handleConnectWallet() && isSigned && (
+          <div className="flex gap-4 items-center">
+            <div className="flex flex-row items-center gap-1 md:gap-3 p-2 rounded-lg bg-shadow">
+              {wallet.handleConnectWallet() &&
+                balance.isSuccess &&
+                balance.data &&
+                isSigned && (
+                  <p className="mt-1 ml-1">
+                    {Number(balance.data.formatted).toLocaleString()}{" "}
+                    {process.env.NEXT_PUBLIC_ASTR_TOKEN_NAME}
+                  </p>
+                )}
+            </div>
           </div>
-          
-        </div>}
+        )}
       </div>
       {googleModal && (
         <Modal title={"Register"} isOpen={true} callback={handleGoogleModal}>

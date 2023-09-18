@@ -85,7 +85,7 @@ const Home: NextPage = () => {
   );
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>RainbowKit App</title>
         <meta
@@ -95,7 +95,9 @@ const Home: NextPage = () => {
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
-      <main className={styles.main}>
+      <main className="h-screen flex flex-col justify-center items-center">
+      <Wallet />
+        <div className="py-4">
         {assetsProfile.data ? (
           assetsProfile.data.data.data.map((nft: GetAssetsRes, key: Key) => {
             return (
@@ -110,12 +112,16 @@ const Home: NextPage = () => {
             );
           })
         ) : (
-          <div className="rounded-full bg-black">
-            <p className="p-2 uppercase">no data</p>
+          <div className="flex w-fit rounded-full bg-white/20 shadow-lg px-12">
+            <p className="text-sm p-2 uppercase text-white">no data</p>
           </div>
         )}
-        {account.address}
-        {userProfile.data && <p>{userProfile.data.employeeId}</p>}
+        </div>
+        <div className="text-white">
+          {userProfile.data && (
+            <p> employeeId: {userProfile.data.employeeId}</p>
+          )}
+        </div>
       </main>
     </div>
   );

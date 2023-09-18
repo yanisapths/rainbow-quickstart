@@ -30,9 +30,8 @@ export default function Layouts(props: any) {
       }}
     >
       <Loading isShowLoading={loading} />
-      <div className="flex flex-col min-height-100vh">
-        <div className="container mx-auto px-2 flex-1">
-        <Wallet />
+      <div className="flex flex-col min-h-full bg-gradient-to-b from-black via-gray-900 to-gray-700">
+        <div className="p-8 flex-1">
           {children}
           </div>
       </div>
