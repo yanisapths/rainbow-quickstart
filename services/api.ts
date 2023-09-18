@@ -108,3 +108,9 @@ export const API_ENDPOINTS = {
   CHECKEXISTING: `${getRegistrationService()}/registration-service/v1/user`,
   REGISTER: `${getRegistrationService()}/registration-service/v1/user`,
 };
+
+export interface Nonce {
+  nonce: string;
+  issuedAt: string;
+  expiredAt: string;
+}

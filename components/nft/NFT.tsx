@@ -21,7 +21,6 @@ interface ChildAssetMetadata {
 export function NFT() {
   const [slotParts, setSlotParts] = useState<SlotParts[]>([]);
   const wallet = useWallet();
-  const [generatedNFTBalance, setGeneratedNFTBalance] = useState<number>();
   const [ownerToTokenId, setOwnerToTokenId] = useState<number>(0);
   // ownerToTokenId
   const contractOwnerToTokenId = useContractRead({
@@ -76,7 +75,7 @@ export function NFT() {
             return (
               <div
                 key={k}
-                className="nft-gen-image absolute "
+                className="nft-gen-image absolute"
                 style={{
                   zIndex: `${slot.z}`,
                   backgroundImage: `url(${slot.childAssetMetadata.image})`,

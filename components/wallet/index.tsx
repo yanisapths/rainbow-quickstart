@@ -8,7 +8,6 @@ import useWallet from "@/services/hook/useWallet";
 
 export default function Wallet() {
   const wallet = useWallet();
-
   const { chain } = useNetwork();
 
   const [network, setNetwork] = useState<string>("");
