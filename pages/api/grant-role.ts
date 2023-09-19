@@ -33,7 +33,8 @@ export default async function grantRole(
       res
         .status(500)
         .json({ error: "Error granting role, are you in the server?" });
-    }
+      throw new Error();
+    } 
   }
 
   //  If the user doesn't have an arise soul, return an error

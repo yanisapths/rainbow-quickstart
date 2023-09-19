@@ -11,7 +11,7 @@ import useOwnerTokenId from "@/services/hook/useOwnerToTokenId";
 import useWallet from "@/services/hook/useWallet";
 import { ariseSoulAddress } from "@/constants";
 
-const Home: NextPage = () => {
+const Success: NextPage = () => {
   const [network, setNetwork] = useState<string>("");
   const wallet = useWallet();
   const ownerTokenId = useOwnerTokenId(ariseSoulAddress, wallet);
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
     onConnect({ address, connector, isReconnected }) {
       setNetwork(connector!.chains[0].name);
     },
-    onDisconnect() { },
+    onDisconnect() {},
   });
 
   return (
@@ -37,18 +37,15 @@ const Home: NextPage = () => {
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
-      <main className="h-screen flex flex-col justify-center items-center">
-        <Wallet />
-        {ownerTokenId && (
-          <div className="py-4">
-            <NFT />
-          </div>
-        )}
-
-        
+      <main className="h-screen flex flex-col justify-center items-center text-white">
+        <h1 className="text-4xl pb-8">Success</h1>
+        <p className="">Your Discord account will be updated soon.</p>
+        <p>
+         You may close this page.
+        </p>
       </main>
     </div>
   );
 };
 
-export default Home;
+export default Success;
