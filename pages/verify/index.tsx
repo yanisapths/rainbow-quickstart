@@ -9,8 +9,9 @@ import useWallet from "@/services/hook/useWallet";
 import { ariseSoulAddress } from "@/constants";
 import { useRouter } from "next/router";
 import { toast } from "@/components/ui/CustomToast";
-import Button from "@/components/ui/Button";
+import Button, { buttonVariants } from "@/components/ui/Button";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
     },
     onDisconnect() {},
   });
-
+  
   const requestGrantRole = async () => {
     try {
       setLoading(true);
@@ -93,10 +94,30 @@ const Home: NextPage = () => {
         </div>
         <div className="flex justify-center text-center items-center py-4">
           <div className="flex flex-col">
-            {ownerTokenId && (
+            {ownerTokenId ? (
               <div className="py-4">
                 <NFT />
               </div>
+            ) : (
+              account.address && (
+                <div className="py-3">
+                  <p className="text-xl">
+                    Oops! It looks like you don&apos;t have Arise Soul yet.
+                  </p>
+                  <p>Wait until you have one and come back again!</p>
+                  <div className="pt-2">
+                    <Link
+                      href="https://aster.arisetech.dev/"
+                      className={buttonVariants({
+                        variant: "default",
+                        size: "lg",
+                      })}
+                    >
+                      Go to aster
+                    </Link>
+                  </div>
+                </div>
+              )
             )}
 
             {account.address && ownerTokenId && user_id && (
