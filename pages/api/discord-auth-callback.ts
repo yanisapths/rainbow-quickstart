@@ -15,7 +15,7 @@ export default async function discordAuthCallback (req: NextApiRequest, res: Nex
       redirect_uri,
       scope,
     });
-
+    
     const accessToken = tokenResponse.data.access_token;
 
     // Use the access token to fetch user data, including the user ID.

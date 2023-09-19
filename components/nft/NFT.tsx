@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AsterSoulABI from "@/artifacts/abi/aster-soul/AsterSoul.json";
 import AsterSoulRenderUtilsABI from "@/artifacts/abi/aster-soul/AsterSoulRenderUtils.json";
 import { useContractRead } from "wagmi";
-import type { BigNumberish } from "ethers";
 import { BigNumber } from "@ethersproject/bignumber";
 import useWallet from "@/services/hook/useWallet";
 
@@ -64,7 +61,7 @@ export function NFT() {
         className="nft-gen-image relative bg-white"
         style={{
           borderRadius: "0.5rem 0.5rem 0 0",
-          backgroundImage: `url(/images/nft/generator/bg-001.png)`,
+          backgroundImage: `url(/images/nft/bg-001.png)`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
