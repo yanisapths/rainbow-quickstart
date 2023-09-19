@@ -94,12 +94,12 @@ const Home: NextPage = () => {
         </div>
         <div className="flex justify-center text-center items-center py-4">
           <div className="flex flex-col">
-            <NFT />
-            {/* {ownerTokenId ? (
+            {ownerTokenId ? (
               <div className="py-4">
+                <NFT />
               </div>
             ) : (
-              account.address && !ownerTokenId &&(
+              account.address && (
                 <div className="py-3">
                   <p className="text-xl">
                     Oops! It looks like you don&apos;t have Arise Soul yet.
@@ -118,9 +118,9 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               )
-            )} */}
+            )}
 
-            {account.address && (
+            {account.address && ownerTokenId && user_id && (
               <Button onClick={requestGrantRole} size="lg">
                 <p>{isGrantingRole ? "Granting role" : "Give me the role"}</p>
                 {isGrantingRole ? (
