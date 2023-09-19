@@ -120,7 +120,7 @@ const Home: NextPage = () => {
               )
             )}
 
-            {account.address && ownerTokenId && user_id && (
+            {account.address && ownerTokenId && (
               <Button onClick={requestGrantRole} size="lg">
                 <p>{isGrantingRole ? "Granting role" : "Give me the role"}</p>
                 {isGrantingRole ? (
