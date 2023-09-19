@@ -99,7 +99,7 @@ const Home: NextPage = () => {
                 <NFT />
               </div>
             ) : (
-              account.address && (
+              account.address && !ownerTokenId &&(
                 <div className="py-3">
                   <p className="text-xl">
                     Oops! It looks like you don&apos;t have Arise Soul yet.
