@@ -94,9 +94,9 @@ const Home: NextPage = () => {
         </div>
         <div className="flex justify-center text-center items-center py-4">
           <div className="flex flex-col">
-            {ownerTokenId ? (
+            <NFT />
+            {/* {ownerTokenId ? (
               <div className="py-4">
-                <NFT />
               </div>
             ) : (
               account.address && !ownerTokenId &&(
@@ -118,9 +118,9 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               )
-            )}
+            )} */}
 
-            {account.address && ownerTokenId && (
+            {account.address && (
               <Button onClick={requestGrantRole} size="lg">
                 <p>{isGrantingRole ? "Granting role" : "Give me the role"}</p>
                 {isGrantingRole ? (
