@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   const [message, setMessage] = useState("");
   const [isGrantingRole, setIsGrantingRole] = useState<boolean>(false);
   const { user_id, token, expires } = router.query;
-  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const currentTimestamp = Date.now();
   const expire = parseInt(expires as any);
 
   // handle account
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
     }
   };
 
-  if (expires && currentTimestamp <= expire) {
+  if (currentTimestamp <= expire) {
     return <ExpirePage />
   }
   

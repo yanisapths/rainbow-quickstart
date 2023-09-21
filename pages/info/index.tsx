@@ -18,7 +18,7 @@ import ExpirePage from "@/components/expire";
 const Home = ({}) => {
   const router = useRouter();
   const { user_id, token, expires } = router.query;
-  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const currentTimestamp = Date.now()
   const expire = parseInt(expires as any);
   const [isSubmit, setIsSubmited] = useState<boolean>(false);
   const [selectBirthday, setSelectBirthday] = useState<Date>();
@@ -100,7 +100,7 @@ const Home = ({}) => {
     setIsSubmited(false);
   };
   
-  if (expires && currentTimestamp <= expire) {
+  if (currentTimestamp <= expire) {
     return <ExpirePage />
   }
   
