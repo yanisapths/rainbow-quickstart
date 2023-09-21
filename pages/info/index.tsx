@@ -64,7 +64,7 @@ const Home = ({}) => {
       const sheet = doc.sheetsByIndex[0];
       await sheet.addRow(req)
       const response = await fetch("/api/grant-external-role", {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({
           user_id,
           token
@@ -74,20 +74,12 @@ const Home = ({}) => {
         },
       });
       const res = await response.json();
-      if (response.ok) {
         toast({
           title: "Congratulations! 🎉",
           message: "You received External role!",
           type: "success",
         });
         router.push({ pathname: "/success" });
-      } else {
-        toast({
-          title: "Error granting role",
-          message: "Please try again",
-          type: "error",
-        });
-      }
     } catch (e) {
       toast({
         title: "Error",
