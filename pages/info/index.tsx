@@ -5,7 +5,6 @@ import { serviceAccountEmail, serviceAccountKey, sheetId } from "@/constants";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
-import { JWT } from "google-auth-library";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
@@ -17,18 +16,11 @@ import ExpirePage from "@/components/expire";
 const Home = ({}) => {
   const router = useRouter();
   const { user_id, token, expires } = router.query;
-  const currentTimestamp = Date.now()
+  const currentTimestamp = Date.now();
   const expire = parseInt(expires as any);
   const [isSubmit, setIsSubmited] = useState<boolean>(false);
   const [selectBirthday, setSelectBirthday] = useState<Date>();
   const formattedBirthday = dayjs(selectBirthday).format("DD-MMM-YYYY");
-
-  const serviceAccountAuth = new JWT({
-    email: serviceAccountEmail,
-    key: serviceAccountKey,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
-  const doc = new GoogleSpreadsheet(sheetId, serviceAccountAuth);
   const {
     handleSubmit,
     register,
@@ -38,48 +30,49 @@ const Home = ({}) => {
   const onSubmit = async (data: any) => {
     try {
       setIsSubmited(true);
-      // const req = {
-      //   nickname: data.nickname,
-      //   firstname: data.firstname,
-      //   lastname: data.lastname,
-      //   birthday: formattedBirthday,
-      //   company: data.company,
-      //   areaOfInterest: data.areaOfInterest,
-      // };
-
-      // await doc.loadInfo();
-      // const allSheets = doc.sheetsByIndex;
-      // if (allSheets.length === 0) {
-      //   await doc.addSheet({
-      //     headerValues: [
-      //       "nickname",
-      //       "firstname",
-      //       "lastname",
-      //       "birthday",
-      //       "company",
-      //       "areaOfInterest",
-      //     ],
-      //   });
-      // }
-      // const sheet = doc.sheetsByIndex[0];
-      // await sheet.addRow(req)
-      const response = await fetch("/api/grant-external-role", {
-        method: "PUT",
+      // Call the addToGoogleSheets API to add data to Google Sheets
+      const addToSheetsResponse = await fetch("/api/add-to-google-sheets", {
+        method: "POST",
         body: JSON.stringify({
-          user_id,
-          token
+          nickname: data.nickname,
+          firstname: data.firstname,
+          lastname: data.lastname,
+          birthday: formattedBirthday,
+          company: data.company,
+          areaOfInterest: data.areaOfInterest,
         }),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      const res = await response.json();
+
+      if (!addToSheetsResponse.ok) {
+        toast({
+          title: "Error",
+          message: "Error adding data to Google Sheets",
+          type: "error",
+        });
+        throw new Error("Error adding data to Google Sheets");
+      } else {
+        // Call grant external role
+        const response = await fetch("/api/grant-external-role", {
+          method: "PUT",
+          body: JSON.stringify({
+            user_id,
+            token,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const res = await response.json();
         toast({
           title: "Congratulations! 🎉",
           message: "You received External role!",
           type: "success",
         });
         router.push({ pathname: "/success" });
+      }
     } catch (e) {
       toast({
         title: "Error",
@@ -89,11 +82,11 @@ const Home = ({}) => {
     }
     setIsSubmited(false);
   };
-  
+
   if (currentTimestamp <= expire) {
-    return <ExpirePage />
+    return <ExpirePage />;
   }
-  
+
   return (
     <div>
       <Head>
