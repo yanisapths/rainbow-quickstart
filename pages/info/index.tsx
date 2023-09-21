@@ -1,8 +1,12 @@
 import RegisterForm from "@/components/register-form";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { FC } from "react";
 
 const Home = ({}) => {
+  const router = useRouter();
+  const user_id = router.query.user_id;
+
   return (
     <div>
       <Head>
@@ -22,7 +26,7 @@ const Home = ({}) => {
           </p>
         </div>
         <div className="flex justify-center text-center items-center">
-         <RegisterForm />
+         <RegisterForm userId={user_id} />
         </div>
       </main>
     </div>

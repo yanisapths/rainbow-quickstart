@@ -11,7 +11,11 @@ import { useForm } from "react-hook-form";
 import Button from "../ui/Button";
 import { toast } from "../ui/CustomToast";
 
-export default function RegisterForm() {
+interface Props {
+  userId: string | undefined | string[];
+}
+
+export default function RegisterForm(userId: Props) {
   const router = useRouter();
   const [isSubmit, setIsSubmited] = useState<boolean>(false);
   const [selectBirthday, setSelectBirthday] = useState<Date>();
@@ -59,7 +63,6 @@ export default function RegisterForm() {
           message: "Thank you, we received your info!",
           type: "success",
         });
-        router.push({ pathname: "/success" });
       });
     } catch (err) {
       console.log(err);
@@ -70,10 +73,34 @@ export default function RegisterForm() {
       });
       setIsSubmited(false);
     } finally {
+      try {
+        const response = await fetch("/api/grant-external-role", {
+          method: "POST",
+          body: JSON.stringify({
+            userId,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        toast({
+          title: "Congratulations! 🎉",
+          message: "You received External role!",
+          type: "success",
+        });
+        if (response.ok) router.push({ pathname: "/success" });
+      } catch (e) {
+        toast({
+          title: "Error granting role",
+          message: "Please try again",
+          type: "error",
+        });
+      } 
       setIsSubmited(false); // Set isSubmit to false after the API request is completed (success or error)
     }
   };
-
+ 
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 lg:px-8">
       <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">

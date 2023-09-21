@@ -3,6 +3,7 @@ export const discordServerId = "1151358849807298663";
 
 // The role ID to grant to the user
 export const roleId = "1151723298716123257"; // Arise Soul
+export const externalRoleId = "1154254407437914132" // external
 
 // contract address
 export const ariseSoulAddress = "0x53Dae3475db220900f606bd5FC03F98cf37cc752";
