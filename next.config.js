@@ -1,10 +1,20 @@
-require('dotenv').config();
+require("dotenv").config();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack: config => {
-    config.resolve.fallback = { fs: false, net: false, tls: false };
+  env: {
+    SERVICE_ACCOUNT_EMAIL: process.env.SERVICE_ACCOUNT_EMAIL,
+    SERVICE_ACCOUNT_PRIVATE_KEY: process.env.SERVICE_ACCOUNT_PRIVATE_KEY,
+    SHEET_ID: process.env.SHEET_ID,
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+      config.resolve.fallback.tls = false;
+      config.resolve.fallback.net = false;
+      config.resolve.fallback.child_process = false;
+    }
     return config;
   },
 };

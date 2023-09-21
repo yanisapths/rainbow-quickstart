@@ -27,3 +27,7 @@ a {
   width: 450px;
   border-radius: 0.5rem;
 }
+
+.input{
+  @apply w-full rounded-lg border border-gray-200 focus:ring-red-200 focus:border-red-400;
+}

@@ -20,6 +20,7 @@ function useOwnerTokenId(contractAddress: any, wallet: any) {
           AsterSoulABI.abi,
           wallet.provider
         );
+       
 
         const ownerToTokenId = await contract.ownerToTokenId(wallet.account.address);
         setTokenId(BigNumber.from(ownerToTokenId).toNumber());
