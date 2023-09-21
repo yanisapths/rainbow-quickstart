@@ -42,6 +42,7 @@ const Home = ({}) => {
           areaOfInterest: data.areaOfInterest,
         }),
         headers: {
+          "Accept": "application/json",
           "Content-Type": "application/json",
         },
       });
