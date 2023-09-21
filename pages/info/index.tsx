@@ -1,7 +1,7 @@
 import RegisterForm from "@/components/register-form";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { serviceAccountEmail, serviceAccountKey, sheetId } from "@/constants";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -13,15 +13,17 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@/components/ui/Button";
 import { toast } from "@/components/ui/CustomToast";
+import ExpirePage from "@/components/expire";
 
 const Home = ({}) => {
   const router = useRouter();
-  const user_id = router.query.user_id;
-  const token = router.query.token;
-  console.log(router.query);
+  const { user_id, token, expires } = router.query;
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const expire = parseInt(expires as any);
   const [isSubmit, setIsSubmited] = useState<boolean>(false);
   const [selectBirthday, setSelectBirthday] = useState<Date>();
   const formattedBirthday = dayjs(selectBirthday).format("DD-MMM-YYYY");
+
   const serviceAccountAuth = new JWT({
     email: serviceAccountEmail,
     key: serviceAccountKey,
@@ -97,7 +99,11 @@ const Home = ({}) => {
     }
     setIsSubmited(false);
   };
-
+  
+  if (expires && currentTimestamp <= expire) {
+    return <ExpirePage />
+  }
+  
   return (
     <div>
       <Head>

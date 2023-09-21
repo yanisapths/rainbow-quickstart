@@ -1,4 +1,5 @@
 import AsterSoulABI from "@/artifacts/abi/aster-soul/AsterSoul.json";
+import ExpirePage from "@/components/expire";
 import { NFT } from "@/components/nft/NFT";
 import Button, { buttonVariants } from "@/components/ui/Button";
 import { toast } from "@/components/ui/CustomToast";
@@ -21,8 +22,9 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [isGrantingRole, setIsGrantingRole] = useState<boolean>(false);
-  const user_id = router.query.user_id;  
-  const token = router.query.token;
+  const { user_id, token, expires } = router.query;
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const expire = parseInt(expires as any);
 
   // handle account
   const account = useAccount({
@@ -67,6 +69,10 @@ const Home: NextPage = () => {
     }
   };
 
+  if (expires && currentTimestamp <= expire) {
+    return <ExpirePage />
+  }
+  
   return (
     <div>
       <Head>
