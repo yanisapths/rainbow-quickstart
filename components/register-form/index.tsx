@@ -12,7 +12,7 @@ import Button from "../ui/Button";
 import { toast } from "../ui/CustomToast";
 
 interface Props {
-  userId: string | undefined | string[];
+  userId?: string;
 }
 
 export default function RegisterForm(userId: Props) {
@@ -26,81 +26,75 @@ export default function RegisterForm(userId: Props) {
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
   const doc = new GoogleSpreadsheet(sheetId, serviceAccountAuth);
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { isValid },
+  } = useForm();
 
   const onSubmit = async (data: any) => {
-    try {
-      setIsSubmited(true);
-      const req = {
-        nickname: data.nickname,
-        firstname: data.firstname,
-        lastname: data.lastname,
-        birthday: formattedBirthday,
-        company: data.company,
-        areaOfInterest: data.areaOfInterest,
-      };
-
-      await doc.loadInfo();
-      const allSheets = doc.sheetsByIndex;
-      if (allSheets.length === 0) {
-        await doc.addSheet({
-          headerValues: [
-            "nickname",
-            "firstname",
-            "lastname",
-            "birthday",
-            "company",
-            "areaOfInterest",
-          ],
-        });
-      }
-
-      const sheet = doc.sheetsByIndex[0];
-      await sheet.addRow(req).then(() => {
-        setIsSubmited(true);
-        toast({
-          title: "Success! 🎉",
-          message: "Thank you, we received your info!",
-          type: "success",
-        });
-      });
-    } catch (err) {
-      console.log(err);
-      toast({
-        title: "Error",
-        message: "Please try again",
-        type: "error",
-      });
-      setIsSubmited(false);
-    } finally {
       try {
-        const response = await fetch("/api/grant-external-role", {
-          method: "POST",
-          body: JSON.stringify({
-            userId,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        setIsSubmited(true);
+        const req = {
+          nickname: data.nickname,
+          firstname: data.firstname,
+          lastname: data.lastname,
+          birthday: formattedBirthday,
+          company: data.company,
+          areaOfInterest: data.areaOfInterest,
+        };
+
+        await doc.loadInfo();
+        const allSheets = doc.sheetsByIndex;
+        if (allSheets.length === 0) {
+          await doc.addSheet({
+            headerValues: [
+              "nickname",
+              "firstname",
+              "lastname",
+              "birthday",
+              "company",
+              "areaOfInterest",
+            ],
+          });
+        }
+        const sheet = doc.sheetsByIndex[0];
+        await sheet.addRow(req).then(async () => {
+          const response = await fetch("/api/grant-external-role", {
+            method: "POST",
+            body: JSON.stringify({
+              userId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          await response.json();
+          if (response.ok) {
+            toast({
+              title: "Congratulations! 🎉",
+              message: "You received External role!",
+              type: "success",
+            });
+            router.push({ pathname: "/success" });
+          }else {
+            toast({
+              title: "Error granting role",
+              message: "Please try again",
+              type: "error",
+            });
+          }
         });
-        const data = await response.json();
-        toast({
-          title: "Congratulations! 🎉",
-          message: "You received External role!",
-          type: "success",
-        });
-        if (response.ok) router.push({ pathname: "/success" });
-      } catch (e) {
+      }catch (e) {
         toast({
           title: "Error granting role",
           message: "Please try again",
           type: "error",
         });
-      } 
-      setIsSubmited(false); // Set isSubmit to false after the API request is completed (success or error)
-    }
+      }
+      setIsSubmited(false);
   };
- 
+
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 lg:px-8">
       <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
@@ -202,6 +196,7 @@ export default function RegisterForm(userId: Props) {
             className="w-full rounded-lg px-5 py-3 sm:w-auto"
             type="submit"
             size="lg"
+            disabled={userId === undefined || !isValid}
           >
             <p className="p-2">{isSubmit ? "Submitting" : " Submit"}</p>
             {isSubmit ? <Loader2 className="animate-spin h-4 w-4" /> : null}

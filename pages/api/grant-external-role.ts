@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { discordServerId, externalRoleId } from "../../constants";
+import { toast } from "@/components/ui/CustomToast";
 
 export default async function grantExternalRole(
   req: NextApiRequest,
@@ -30,6 +31,11 @@ export default async function grantExternalRole(
     } 
   }
   else {
+    toast({
+      title: "Error",
+      message: "Error granting role, are you in the server?",
+      type: "error",
+    });
     res.status(401).json({ error: "Error granting role, are you in the server?" });
   }
 }

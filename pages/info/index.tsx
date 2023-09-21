@@ -26,7 +26,7 @@ const Home = ({}) => {
           </p>
         </div>
         <div className="flex justify-center text-center items-center">
-         <RegisterForm userId={user_id} />
+         <RegisterForm userId={user_id?.toString()} />
         </div>
       </main>
     </div>
