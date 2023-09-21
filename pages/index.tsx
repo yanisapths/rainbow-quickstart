@@ -1,11 +1,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import { GetAssetsRes, NFT } from "@/components/nft/NFT";
 import { Key, useEffect, useState } from "react";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
-import { verifyMessage } from "ethers";
 import Wallet from "@/components/wallet/index";
 import useOwnerTokenId from "@/services/hook/useOwnerToTokenId";
 import useWallet from "@/services/hook/useWallet";
@@ -15,8 +13,6 @@ const Home: NextPage = () => {
   const [network, setNetwork] = useState<string>("");
   const wallet = useWallet();
   const ownerTokenId = useOwnerTokenId(ariseSoulAddress, wallet);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
 
   // handle account
   const account = useAccount({
@@ -38,14 +34,6 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="h-screen flex flex-col justify-center items-center">
-        <Wallet />
-        {ownerTokenId && (
-          <div className="py-4">
-            <NFT />
-          </div>
-        )}
-
-        
       </main>
     </div>
   );

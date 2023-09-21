@@ -1,20 +1,17 @@
+import AsterSoulABI from "@/artifacts/abi/aster-soul/AsterSoul.json";
+import { NFT } from "@/components/nft/NFT";
+import Button, { buttonVariants } from "@/components/ui/Button";
+import { toast } from "@/components/ui/CustomToast";
+import Wallet from "@/components/wallet/index";
+import useWallet from "@/services/hook/useWallet";
+import { BigNumber } from "@ethersproject/bignumber";
+import { Loader2 } from "lucide-react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { NFT } from "@/components/nft/NFT";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAccount, useContractRead } from "wagmi";
-import Wallet from "@/components/wallet/index";
-import useOwnerTokenId from "@/services/hook/useOwnerToTokenId";
-import useWallet from "@/services/hook/useWallet";
-import { ariseSoulAddress } from "@/constants";
-import { useRouter } from "next/router";
-import { toast } from "@/components/ui/CustomToast";
-import Button, { buttonVariants } from "@/components/ui/Button";
-import { Loader2 } from "lucide-react";
-import Link from "next/link";
-import { BigNumber } from "@ethersproject/bignumber";
-import AsterSoulABI from "@/artifacts/abi/aster-soul/AsterSoul.json";
-import AsterSoulRenderUtilsABI from "@/artifacts/abi/aster-soul/AsterSoulRenderUtils.json";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -24,24 +21,12 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [isGrantingRole, setIsGrantingRole] = useState<boolean>(false);
-  const user_id = router.query.user_id;
+  const user_id = router.query.user_id;  
+  const token = router.query.token;
 
-  const contractOwnerToTokenId = useContractRead({
-    address: process.env.NEXT_PUBLIC_ABI_ADDRESS_ASTERSOUL as any,
-    abi: AsterSoulABI.abi,
-    functionName: "ownerToTokenId",
-    args: [wallet.account.address],
-    enabled: !!wallet.account.address,
-    onSuccess(data: string) {
-      setOwnerToTokenId(BigNumber.from(data).toNumber());
-    },
-    onError(error) {
-      console.log(error);
-    },
-  });
   // handle account
   const account = useAccount({
-    onConnect({ address, connector }) {
+    onConnect({ connector }) {
       setNetwork(connector!.chains[0].name);
     },
     onDisconnect() {},
@@ -56,6 +41,7 @@ const Home: NextPage = () => {
         body: JSON.stringify({
           ownerTokenId,
           user_id,
+          token
         }),
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +121,7 @@ const Home: NextPage = () => {
               )
             )}
 
-            {account.address && ownerTokenId && user_id && (
+            {account.address && ownerTokenId && user_id && token && (
               <Button onClick={requestGrantRole} size="lg">
                 <p>{isGrantingRole ? "Granting role" : "Give me the role"}</p>
                 {isGrantingRole ? (

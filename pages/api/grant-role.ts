@@ -5,9 +5,13 @@ export default async function grantRole(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { ownerTokenId, user_id } = req.body;
+  const { ownerTokenId, user_id, token } = req.body;
 
-  if (ownerTokenId != null || ownerTokenId != 0) {
+  if(!token || !user_id){
+    res.status(401).json({ error: "Invalid no token, user_id" });
+  }
+
+  if (ownerTokenId != null || ownerTokenId != 0 && token && user_id) {
     // user has arise soul
     const response = await fetch(
       // Discord Developer Docs for this API Request: https://discord.com/developers/docs/resources/guild#add-guild-member-role
@@ -39,6 +43,6 @@ export default async function grantRole(
 
   //  If the user doesn't have an arise soul, return an error
   else {
-    res.status(401).json({ error: "User does not have Arise soul" });
+    res.status(401).json({ error: "Invalid no token, user_id or user does not have Arise Soul." });
   }
 }

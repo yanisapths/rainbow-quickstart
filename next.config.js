@@ -1,4 +1,3 @@
-require("dotenv").config();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,11 +8,14 @@ const nextConfig = {
     SHEET_ID: process.env.SHEET_ID,
   },
   webpack: (config, { isServer }) => {
-    if (!isServer) {
+    if(!isServer){
+      require("dotenv").config();
+  
       config.resolve.fallback.fs = false;
       config.resolve.fallback.tls = false;
       config.resolve.fallback.net = false;
       config.resolve.fallback.child_process = false;
+
     }
     return config;
   },
