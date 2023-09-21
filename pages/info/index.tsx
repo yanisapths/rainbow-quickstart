@@ -38,31 +38,31 @@ const Home = ({}) => {
   const onSubmit = async (data: any) => {
     try {
       setIsSubmited(true);
-      const req = {
-        nickname: data.nickname,
-        firstname: data.firstname,
-        lastname: data.lastname,
-        birthday: formattedBirthday,
-        company: data.company,
-        areaOfInterest: data.areaOfInterest,
-      };
+      // const req = {
+      //   nickname: data.nickname,
+      //   firstname: data.firstname,
+      //   lastname: data.lastname,
+      //   birthday: formattedBirthday,
+      //   company: data.company,
+      //   areaOfInterest: data.areaOfInterest,
+      // };
 
-      await doc.loadInfo();
-      const allSheets = doc.sheetsByIndex;
-      if (allSheets.length === 0) {
-        await doc.addSheet({
-          headerValues: [
-            "nickname",
-            "firstname",
-            "lastname",
-            "birthday",
-            "company",
-            "areaOfInterest",
-          ],
-        });
-      }
-      const sheet = doc.sheetsByIndex[0];
-      await sheet.addRow(req)
+      // await doc.loadInfo();
+      // const allSheets = doc.sheetsByIndex;
+      // if (allSheets.length === 0) {
+      //   await doc.addSheet({
+      //     headerValues: [
+      //       "nickname",
+      //       "firstname",
+      //       "lastname",
+      //       "birthday",
+      //       "company",
+      //       "areaOfInterest",
+      //     ],
+      //   });
+      // }
+      // const sheet = doc.sheetsByIndex[0];
+      // await sheet.addRow(req)
       const response = await fetch("/api/grant-external-role", {
         method: "PUT",
         body: JSON.stringify({
