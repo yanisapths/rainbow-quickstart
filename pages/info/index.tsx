@@ -47,32 +47,27 @@ const Home = ({}) => {
       });
 
       if (!addToSheetsResponse.ok) {
-        toast({
-          title: "Error",
-          message: "Error adding data to Google Sheets",
-          type: "error",
-        });
         throw new Error("Error adding data to Google Sheets");
-      } else {
-        // Call grant external role
-        const response = await fetch("/api/grant-external-role", {
-          method: "PUT",
-          body: JSON.stringify({
-            user_id,
-            token,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const res = await response.json();
-        toast({
-          title: "Congratulations! 🎉",
-          message: "You received External role!",
-          type: "success",
-        });
-        router.push({ pathname: "/success" });
       }
+
+      // Call grant external role
+      const response = await fetch("/api/grant-external-role", {
+        method: "PUT",
+        body: JSON.stringify({
+          user_id,
+          token,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const res = await response.json();
+      toast({
+        title: "Congratulations! 🎉",
+        message: "You received External role!",
+        type: "success",
+      });
+      router.push({ pathname: "/success" });
     } catch (e) {
       toast({
         title: "Error",
