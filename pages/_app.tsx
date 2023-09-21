@@ -5,7 +5,6 @@ import {
 } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
-import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
@@ -68,7 +67,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     queryClientRef.current = new QueryClient();
   }
   return (
-    <SessionProvider session={session}>
         <GoogleOAuthProvider clientId={clientId}>
           <QueryClientProvider client={queryClientRef.current}>
             <WagmiConfig config={config}>
@@ -80,7 +78,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             </WagmiConfig>
           </QueryClientProvider>
         </GoogleOAuthProvider>
-    </SessionProvider>
   );
 }
 
