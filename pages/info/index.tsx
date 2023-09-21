@@ -1,7 +1,6 @@
-import RegisterForm from "@/components/register-form";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { FC, useEffect } from "react";
+import React from "react";
 import { serviceAccountEmail, serviceAccountKey, sheetId } from "@/constants";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";

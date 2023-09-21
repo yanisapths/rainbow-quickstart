@@ -1,10 +1,7 @@
-import { useAppContext } from "@/context/app";
-import { GoogleProfile } from "@/model/google.model";
-import { Storage } from "@/services/storage";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useEffect, useRef, useState } from "react";
-import { useAccount, useBalance, useConnect, useNetwork } from "wagmi";
 import useWallet from "@/services/hook/useWallet";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useEffect, useState } from "react";
+import { useAccount, useBalance, useConnect, useNetwork } from "wagmi";
 
 export default function Wallet() {
   const wallet = useWallet();
@@ -40,20 +37,6 @@ export default function Wallet() {
     }
   }, [balanceNative]);
 
-  const connect = useConnect({
-    onSuccess(data) {
-      console.log("Connect", data);
-    },
-    onError(error) {
-      console.log("Error", error);
-    },
-    onMutate(connector) {
-      console.log("Before Connect", connector);
-    },
-    onSettled(data, error) {
-      console.log("Settled", { data, error });
-    },
-  });
 
   return (
     <>

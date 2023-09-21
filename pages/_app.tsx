@@ -10,12 +10,11 @@ import type { AppProps } from "next/app";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import Layouts from "../components/layout/layout";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
 import "../styles/globals.css";
 
-import { useEffect, useRef, useState } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useRef } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const ariseChain: Chain = {
   id: 4833,

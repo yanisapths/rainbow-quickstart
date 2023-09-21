@@ -1,22 +1,19 @@
-import AsterSoulABI from "@/artifacts/abi/aster-soul/AsterSoul.json";
 import ExpirePage from "@/components/expire";
 import { NFT } from "@/components/nft/NFT";
 import Button, { buttonVariants } from "@/components/ui/Button";
 import { toast } from "@/components/ui/CustomToast";
 import Wallet from "@/components/wallet/index";
 import useWallet from "@/services/hook/useWallet";
-import { BigNumber } from "@ethersproject/bignumber";
 import { Loader2 } from "lucide-react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useAccount, useContractRead } from "wagmi";
+import { useAccount } from "wagmi";
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const wallet = useWallet();
   const [ownerTokenId, setOwnerToTokenId] = useState<number | null>(null);
   const [network, setNetwork] = useState<string>("");
   const [loading, setLoading] = useState(false);

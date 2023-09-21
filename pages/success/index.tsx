@@ -1,22 +1,12 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import useWallet from "@/services/hook/useWallet";
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { GetAssetsRes, NFT } from "@/components/nft/NFT";
-import { Key, useEffect, useState } from "react";
-import { useAccount, useDisconnect, useSignMessage } from "wagmi";
-import { verifyMessage } from "ethers";
-import Wallet from "@/components/wallet/index";
-import useOwnerTokenId from "@/services/hook/useOwnerToTokenId";
-import useWallet from "@/services/hook/useWallet";
-import { ariseSoulAddress } from "@/constants";
+import { useState } from "react";
+import { useAccount } from "wagmi";
 
 const Success: NextPage = () => {
   const [network, setNetwork] = useState<string>("");
   const wallet = useWallet();
-  const ownerTokenId = useOwnerTokenId(ariseSoulAddress, wallet);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
 
   // handle account
   const account = useAccount({
