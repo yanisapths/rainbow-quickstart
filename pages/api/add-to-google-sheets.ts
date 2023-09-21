@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { serviceAccountEmail, serviceAccountKey, sheetId } from "@/constants";
 import { JWT } from "google-auth-library";
+import { google } from "googleapis";
 
 export default async function addToGoogleSheets(
   req: NextApiRequest,
@@ -9,14 +10,17 @@ export default async function addToGoogleSheets(
 ) {
   const { nickname, firstname, lastname, birthday, company, areaOfInterest } =
     req.body;
-  const serviceAccountAuth = new JWT({
-    email: serviceAccountEmail,
-    key: serviceAccountKey,
+
+  const auth =  new google.auth.GoogleAuth({
+    credentials: {
+      private_key: serviceAccountKey.replace(/\\n/g,'n'),
+      client_email: serviceAccountEmail
+    },
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
   try {
-    const doc = new GoogleSpreadsheet(sheetId, serviceAccountAuth);
+    const doc = new GoogleSpreadsheet(sheetId, auth);
 
     // Load the Google Sheets document
     await doc.loadInfo();
